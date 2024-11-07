@@ -1,4 +1,4 @@
--include .env #用于包含 .env 文件中的环境变量。
+-include .env
 
 .PHONY: all test clean deploy fund help install snapshot format anvil 
 
@@ -31,6 +31,7 @@ snapshot :; forge snapshot
 
 format :; forge fmt
 
+anvil :; anvil -m 'test test test test test test test test test test test junk' --steps-tracing --block-time 1
 
 NETWORK_ARGS := --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) --broadcast
 
@@ -42,6 +43,8 @@ deploy:
 	@forge script script/DeployRaffle.s.sol:DeployRaffle $(NETWORK_ARGS)
 
 createSubscription:
+
+
 	@forge script script/Interactions.s.sol:CreateSubscription $(NETWORK_ARGS)
 
 addConsumer:

@@ -3,15 +3,15 @@ pragma solidity ^0.8.19;
 
 import {LinkToken} from "../test/Mocks/LinkToken.sol";
 import {Script, console2} from "lib/forge-std/src/Script.sol";
-import {VRFCoordinatorV2_5Mock} from "lib/forge-std/chainlink-brownie-contracts/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol";
+import {VRFCoordinatorV2_5Mock} from "lib/chainlink-brownie-contracts/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol";
 
 abstract contract CodeConstants {
-    uint96 public MOCK_BASE_FEE = 0.25 ether;//调用 VRFCoordinator 请求随机数时需要支付的固定费用
-    uint96 public MOCK_GAS_PRICE_LINK = 1e9;//gas 价格是请求随机数时需要支付的 LINK 代币的价格。这里设置为 1e9，表示每单位 gas 的价格为 1 Gwei（1e9 wei）。
+    uint96 public MOCK_BASE_FEE = 0.25 ether;
+    uint96 public MOCK_GAS_PRICE_LINK = 1e9;
     // LINK / ETH price
-    int256 public MOCK_WEI_PER_UINT_LINK = 4e15;//这个变量表示 LINK 代币相对于 ETH 的价格。在实际使用中，LINK/ETH 价格用于将 ETH 转换为 LINK 代币。这里设置为 4e15，表示 1 LINK 代币的价格为 0.004 ETH（4e15 wei）。
+    int256 public MOCK_WEI_PER_UINT_LINK = 4e15;
 
-    address public FOUNDRY_DEFAULT_SENDER = 0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38;
+    address public FOUNDRY_DEFAULT_SENDER = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
 
     uint256 public constant ETH_SEPOLIA_CHAIN_ID = 11155111;
     uint256 public constant ETH_MAINNET_CHAIN_ID = 1;
@@ -72,13 +72,14 @@ contract HelperConfig is CodeConstants, Script {
         }
     }
 
+
     function getMainnetEthConfig() public pure returns (NetworkConfig memory mainnetNetworkConfig) {
         mainnetNetworkConfig = NetworkConfig({
-            subscriptionId: 0, // If left as 0, our scripts will create one!
+            subscriptionId: 0, 
             gasLane: 0x9fe0eebf5e446e3c998ec9bb19951541aee00bb90ea201ae456421a2ded86805,
-            automationUpdateInterval: 30, // 30 seconds
+            automationUpdateInterval: 30, 
             raffleEntranceFee: 0.01 ether,
-            callbackGasLimit: 500000, // 500,000 gas
+            callbackGasLimit: 5000000, 
             vrfCoordinatorV2_5: 0x271682DEB8C4E0901D1a1550aD2e64D568E69909,
             link: 0x514910771AF9Ca656af840dff83E8264EcF986CA,
             account: 0x0c3743AC31156269ea0ea04bdB1864645017a92b
