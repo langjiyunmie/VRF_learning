@@ -3,7 +3,8 @@ pragma solidity ^0.8.19;
 
 import {LinkToken} from "../test/Mocks/LinkToken.sol";
 import {Script, console2} from "lib/forge-std/src/Script.sol";
-import {VRFCoordinatorV2_5Mock} from "lib/chainlink-brownie-contracts/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol";
+import {VRFCoordinatorV2_5Mock} from
+    "lib/chainlink-brownie-contracts/contracts/src/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol";
 
 abstract contract CodeConstants {
     uint96 public MOCK_BASE_FEE = 0.25 ether;
@@ -72,14 +73,13 @@ contract HelperConfig is CodeConstants, Script {
         }
     }
 
-
     function getMainnetEthConfig() public pure returns (NetworkConfig memory mainnetNetworkConfig) {
         mainnetNetworkConfig = NetworkConfig({
-            subscriptionId: 0, 
+            subscriptionId: 0,
             gasLane: 0x9fe0eebf5e446e3c998ec9bb19951541aee00bb90ea201ae456421a2ded86805,
-            automationUpdateInterval: 30, 
+            automationUpdateInterval: 30,
             raffleEntranceFee: 0.01 ether,
-            callbackGasLimit: 5000000, 
+            callbackGasLimit: 5000000,
             vrfCoordinatorV2_5: 0x271682DEB8C4E0901D1a1550aD2e64D568E69909,
             link: 0x514910771AF9Ca656af840dff83E8264EcF986CA,
             account: 0x0c3743AC31156269ea0ea04bdB1864645017a92b

@@ -1,10 +1,9 @@
-
 pragma solidity ^0.8.28;
 
-import {Script,console} from "lib/forge-std/src/Script.sol";
+import {Script, console} from "lib/forge-std/src/Script.sol";
 import {Raffle} from "src/Raffle.sol";
 import {HelperConfig} from "script/HelperConfig.s.sol";
-import {CreateSubscription,AddConsumer,FundSubscription} from "script/Interactions.s.sol";
+import {CreateSubscription, AddConsumer, FundSubscription} from "script/Interactions.s.sol";
 
 contract DeployRaffle is Script {
     function run() external returns (Raffle, HelperConfig) {
